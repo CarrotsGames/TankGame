@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 
 public enum GameStates
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("Empty game objects where you want spawn points to be")]
     public GameObject[] PowerupSpawnPoints;
 
+    private XboxController controller;
     private void Awake()
     {
         Players = GameObject.FindGameObjectsWithTag("Player");
@@ -85,12 +87,13 @@ public class GameManager : MonoBehaviour
 
                 CountDownTimerText.text = minutes + " : " + seconds;
 
-                //Powerup spawning;
+                //Powerup spawning
 
                 //decrease timer
                 PowerUpDropTimer -= Time.deltaTime;
 
 
+                //make sure theres at least 1 powerup spawnpoint
                 if (PowerupSpawnPoints.Length > 1)
                 {
 
@@ -107,10 +110,13 @@ public class GameManager : MonoBehaviour
                             RaycastHit hit;
                             if (Physics.Raycast(randSpawn, -transform.up, out hit))
                             {
+                                //if the raycast hits the floor
                                 if (hit.collider.gameObject.tag == "Ground")
                                 {
+                                    //a powerup can be spawned
                                     canDrop = true;
                                 }
+                                //else it cant
                                 else if (hit.collider.gameObject.tag == "Untagged")
                                 {
                                     break;
@@ -122,8 +128,10 @@ public class GameManager : MonoBehaviour
                             }
 
                         }
+                        //if a powerup can be dropped
                         if (canDrop)
                         {
+                            //spawn a powerup
                             Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], randSpawn, Quaternion.identity);
                         }
                         //reset timer
@@ -134,7 +142,7 @@ public class GameManager : MonoBehaviour
 
 
                 //check for escape input to pause
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (XCI.GetButtonDown(XboxButton.Start, controller))
                 {
                     currentState = GameStates.Paused;
                 }
@@ -155,7 +163,7 @@ public class GameManager : MonoBehaviour
 
                 //Setting UI actives
                 PausedUI.SetActive(true);
-                GameUI.SetActive(false);
+                GameUI.SetActive(true);
                 GameOverUI.SetActive(false);
 
                 //check for escape input to pause
@@ -199,7 +207,7 @@ public class GameManager : MonoBehaviour
 
     public void ToGame()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
     }
 
 
