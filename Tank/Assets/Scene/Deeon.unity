@@ -113,6 +113,21 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &104136254 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1859206312759146, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &138189640 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1465686799573628, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &233267502 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1083862373027918, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
 --- !u!1 &338475972
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +136,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 338475973}
+  - component: {fileID: 338475974}
+  - component: {fileID: 338475975}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: SpawnPoint
@@ -141,6 +158,43 @@ Transform:
   m_Father: {fileID: 2086736929}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338475974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338475972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c63e5bc5b8994dad5e260d2bf45ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 3
+  Images:
+  - {fileID: 104136254}
+  - {fileID: 138189640}
+  - {fileID: 1588128814}
+--- !u!114 &338475975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338475972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dda62b8d9304345be718230ffb3eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: 0
+  speed: 3
+  speedBoost: 6
+  maxSpeedBoostTime: 5
+  rotation: 1
+  smooth: 5
+  tiltAngle: 30
+  bulletSpeed: 20
+  health: 3
+  healthIncrease: 1
 --- !u!114 &723473072 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114195483489205176, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
@@ -155,6 +209,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1046502492}
+  - component: {fileID: 1046502493}
+  - component: {fileID: 1046502494}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: SpawnPoint
@@ -175,6 +231,43 @@ Transform:
   m_Father: {fileID: 2086736929}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1046502493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046502491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c63e5bc5b8994dad5e260d2bf45ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 3
+  Images:
+  - {fileID: 1283379128}
+  - {fileID: 1896935856}
+  - {fileID: 1217991979}
+--- !u!114 &1046502494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046502491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dda62b8d9304345be718230ffb3eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: 0
+  speed: 3
+  speedBoost: 6
+  maxSpeedBoostTime: 5
+  rotation: 1
+  smooth: 5
+  tiltAngle: 30
+  bulletSpeed: 20
+  health: 3
+  healthIncrease: 1
 --- !u!1 &1166433778
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,9 +403,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1217991979 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1918915818776498, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
 --- !u!1 &1267761066 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1439671411136840, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1283379128 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1198250503585516, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1289134441 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1362823209050602, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
     type: 2}
   m_PrefabInternal: {fileID: 1347542762}
 --- !u!1 &1325075941
@@ -380,6 +488,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1334711236 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008459957390718, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
 --- !u!1001 &1347542762
 Prefab:
   m_ObjectHideFlags: 0
@@ -491,6 +604,21 @@ GameObject:
   m_PrefabParentObject: {fileID: 1349012132088266, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
     type: 2}
   m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1555874357 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1489456367615912, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1579846915 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1463376552458664, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1588128814 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1147152024947514, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
 --- !u!1 &1612215283
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +627,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1612215284}
+  - component: {fileID: 1612215285}
+  - component: {fileID: 1612215286}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: SpawnPoint
@@ -519,6 +649,43 @@ Transform:
   m_Father: {fileID: 2086736929}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612215285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1612215283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c63e5bc5b8994dad5e260d2bf45ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 3
+  Images:
+  - {fileID: 1334711236}
+  - {fileID: 1842752355}
+  - {fileID: 1289134441}
+--- !u!114 &1612215286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1612215283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dda62b8d9304345be718230ffb3eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: 0
+  speed: 3
+  speedBoost: 6
+  maxSpeedBoostTime: 5
+  rotation: 1
+  smooth: 5
+  tiltAngle: 30
+  bulletSpeed: 20
+  health: 3
+  healthIncrease: 1
 --- !u!1 &1644593068
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +694,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1644593069}
+  - component: {fileID: 1644593070}
+  - component: {fileID: 1644593071}
   m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: SpawnPoint
@@ -547,9 +716,56 @@ Transform:
   m_Father: {fileID: 2086736929}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1644593070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1644593068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c63e5bc5b8994dad5e260d2bf45ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 3
+  Images:
+  - {fileID: 1579846915}
+  - {fileID: 233267502}
+  - {fileID: 1555874357}
+--- !u!114 &1644593071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1644593068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dda62b8d9304345be718230ffb3eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: 0
+  speed: 3
+  speedBoost: 6
+  maxSpeedBoostTime: 5
+  rotation: 1
+  smooth: 5
+  tiltAngle: 30
+  bulletSpeed: 20
+  health: 3
+  healthIncrease: 1
 --- !u!1 &1730078548 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1728943278983062, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1842752355 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1082595829576676, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1347542762}
+--- !u!1 &1896935856 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1876721296923238, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
     type: 2}
   m_PrefabInternal: {fileID: 1347542762}
 --- !u!1 &1999619192
