@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     //Variables
     //Desginer
-    [Header("Controller")]
+    [Header("W")]
     [SerializeField]
     private XboxController controller;
    
@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Movement();
+        DPadMovement();
+        StickMovement();
         Rotation();
 
         //Timers
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour {
         if(hasSpeedBoost)
            speedTimer += Time.deltaTime;
 
-        if(speedTimer < maxSpeedBoostTime)
+        if(speedTimer > maxSpeedBoostTime)
         {
             speed = speedBoost;
         }
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour {
         if (bulletCoolDown > maxShootCoolDown)
         {
             //If we press the fire button
-            if (Input.GetMouseButtonDown(0))
+            if (XCI.GetButton(XboxButton.A, controller))
             {
                 //Fire
                 Shoot();
@@ -113,47 +114,62 @@ public class PlayerController : MonoBehaviour {
        
     }
 
-    private void Movement()
+    private void StickMovement()
+    {
+        //Obtain the values
+        float moveHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+        float moveVertical = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+        //Update the position
+        transform.position += movement * speed * Time.deltaTime;
+    }
+
+    private void DPadMovement()
     {
         //Movement based on individual keys (not using physics)
 
         //Create a temp pos based on your current pos
         Vector3 pos = transform.position;
 
-        //Alter the temp pos
-        if (XCI.GetAxis(XboxAxis.LeftStickY, controller) > 0 || XCI.GetButton(XboxButton.DPadUp, controller))
-        {
-            pos.z += speed * Time.deltaTime;
-        }
-
-        if (XCI.GetAxis(XboxAxis.LeftStickY, controller) < 0 || XCI.GetButton(XboxButton.DPadDown, controller))
-        {
-            pos.z -= speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            pos.x += speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            pos.x -= speed * Time.deltaTime;
-        }
+       //Alter the temp pos
+       if (XCI.GetButton(XboxButton.DPadUp, controller))
+       {                                                  
+           pos.z += speed * Time.deltaTime;               
+       }                                                  
+                                                          
+       if (XCI.GetButton(XboxButton.DPadDown, controller))
+       {                                                 
+           pos.z -= speed * Time.deltaTime;              
+       }                                                 
+                                                         
+       if (XCI.GetButton(XboxButton.DPadRight, controller))
+       {                                                  
+           pos.x += speed * Time.deltaTime;               
+       }                                                  
+                                                          
+       if (XCI.GetButton(XboxButton.DPadLeft, controller))
+       {
+           pos.x -= speed * Time.deltaTime;
+       }
 
 
         //Make the real pos equal to the temnp pos
         transform.position = pos;
+
+
+
     }
 
     private void Rotation()
     {
         //Check key inputs for rotation
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(XCI.GetButton(XboxButton.LeftBumper, controller))
         {
             keyPress -= rotation * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (XCI.GetButton(XboxButton.RightBumper, controller))
         {
             keyPress += rotation * Time.deltaTime;
         }
