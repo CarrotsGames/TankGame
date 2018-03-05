@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
     [Header("Alter Movement")]
     [SerializeField]
     private float speed = 3.0f;
+    [SerializeField]
+    private float speedBoost = 6.0f;
+    [SerializeField]
+    private float maxSpeedBoostTime = 5.0f;
 
     [Header("Alter Rotation")]
     [SerializeField]
@@ -22,18 +26,35 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float bulletSpeed = 20.0f;
     private float maxShootCoolDown = 5.0f;
-    
+
+    [Header("Alter Health")]
+    [SerializeField]
+    private int health = 3;
+    [SerializeField]
+    private int healthIncrease = 1;
+
     //Programmer
     private Transform canonTransform;
     private float keyPress = 0.0f;
     private GameObject bulletPrefab;
     private float bulletCoolDown = 5.1f;
+    private float storedSpeed;
+    private bool hasSpeedBoost = false;
+    private float speedTimer = 0.0f;
+    
+    //Getters and setters
+    public int Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
 
     // Use this for initialization
     void Start ()
     {
         canonTransform = transform.GetChild(0);
         bulletPrefab = Resources.Load("projectile") as GameObject;
+        storedSpeed = speed;
 	}
 	
 	// Update is called once per frame
@@ -42,10 +63,25 @@ public class PlayerController : MonoBehaviour {
         Movement();
         Rotation();
 
+        //Timers
         bulletCoolDown += Time.deltaTime;
 
+        if(hasSpeedBoost)
+           speedTimer += Time.deltaTime;
+
+        if(speedTimer < maxSpeedBoostTime)
+        {
+            speed = speedBoost;
+        }
+        else
+        {
+            hasSpeedBoost = false;
+            speedTimer = 0.0f;
+            speed = storedSpeed;
+        }
+
         //If we can fire
-        if(bulletCoolDown > maxShootCoolDown)
+        if (bulletCoolDown > maxShootCoolDown)
         {
             //If we press the fire button
             if (Input.GetMouseButtonDown(0))
@@ -53,6 +89,14 @@ public class PlayerController : MonoBehaviour {
                 //Fire
                 Shoot();
             }
+        }
+
+
+
+        if(health == 0)
+        {
+            //Terminate existance 
+            Destroy(gameObject);
         }
        
     }
@@ -95,11 +139,11 @@ public class PlayerController : MonoBehaviour {
         //Check key inputs for rotation
         if(Input.GetKey(KeyCode.LeftArrow))
         {
-            keyPress += rotation * Time.deltaTime;
+            keyPress -= rotation * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            keyPress -= rotation * Time.deltaTime;
+            keyPress += rotation * Time.deltaTime;
         }
 
 
@@ -124,5 +168,26 @@ public class PlayerController : MonoBehaviour {
 
         //Reset the timer
         bulletCoolDown = 0.0f;
+    }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Speed")
+        {
+            hasSpeedBoost = true;
+
+            //Destroy the other gameObject
+            Destroy(other.gameObject);
+        }
+
+        if(other.tag == "Health")
+        {
+            health += healthIncrease;
+
+            //Destroy the other gameObject
+            Destroy(other.gameObject);
+        }
     }
 }
