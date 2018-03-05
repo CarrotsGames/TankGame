@@ -21,15 +21,13 @@ public class PlayerController : MonoBehaviour {
     [Header("Alter Bullet")]
     [SerializeField]
     private float bulletSpeed = 20.0f;
-    [SerializeField]
-    private float maxBulletTime = 5.0f;
+    private float maxShootCoolDown = 5.0f;
     
     //Programmer
     private Transform canonTransform;
     private float keyPress = 0.0f;
     private GameObject bulletPrefab;
-    private bool shot = false;
-    private float bulletTimer = 0.0f;
+    private float bulletCoolDown = 5.1f;
 
     // Use this for initialization
     void Start ()
@@ -44,11 +42,18 @@ public class PlayerController : MonoBehaviour {
         Movement();
         Rotation();
 
-        if(Input.GetMouseButtonDown(0))
+        bulletCoolDown += Time.deltaTime;
+
+        //If we can fire
+        if(bulletCoolDown > maxShootCoolDown)
         {
-            Shoot();
+            //If we press the fire button
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Fire
+                Shoot();
+            }
         }
-        
        
     }
 
@@ -116,9 +121,8 @@ public class PlayerController : MonoBehaviour {
         projectile.transform.position = canonTransform.position + canonTransform.forward;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = canonTransform.forward * bulletSpeed;
-        
-        
-        
-        Destroy(projectile, 2.0f);
+
+        //Reset the timer
+        bulletCoolDown = 0.0f;
     }
 }
