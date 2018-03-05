@@ -22,6 +22,13 @@ public class PlayerUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (pc != null)
+        Lives = pc.Health;
+        else
+        {
+            Lives = 0;
+        }
+
 		if(Lives == 3)
         {
             foreach(GameObject go in Images)
