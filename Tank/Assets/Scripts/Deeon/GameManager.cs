@@ -90,41 +90,47 @@ public class GameManager : MonoBehaviour
                 //decrease timer
                 PowerUpDropTimer -= Time.deltaTime;
 
-                //if timer reaches zero or beyond
-                if (PowerUpDropTimer <= 0)
+
+                if (PowerupSpawnPoints.Length > 1)
                 {
-                    Vector3 randSpawn = new Vector3(0, 0, 0);
-                    bool canDrop = false;
-                    //to make better do a raycheck downwards and see if the ground is the only thing visible, else choose another random position
 
-                    while (!canDrop)
+                    //if timer reaches zero or beyond
+                    if (PowerUpDropTimer <= 0)
                     {
-                        randSpawn = PowerupSpawnPoints[Random.Range(0, PowerupSpawnPoints.Length)].transform.position;
-                        RaycastHit hit;
-                        if (Physics.Raycast(randSpawn, -transform.up, out hit))
+                        Vector3 randSpawn = new Vector3(0, 0, 0);
+                        bool canDrop = false;
+                        //to make better do a raycheck downwards and see if the ground is the only thing visible, else choose another random position
+
+                        while (!canDrop)
                         {
-                            if (hit.collider.gameObject.tag == "Ground")
+                            randSpawn = PowerupSpawnPoints[Random.Range(0, PowerupSpawnPoints.Length)].transform.position;
+                            RaycastHit hit;
+                            if (Physics.Raycast(randSpawn, -transform.up, out hit))
                             {
-                                canDrop = true;
+                                if (hit.collider.gameObject.tag == "Ground")
+                                {
+                                    canDrop = true;
+                                }
+                                else if (hit.collider.gameObject.tag == "Untagged")
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
                             }
-                            else if (hit.collider.gameObject.tag == "Untagged")
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
 
+                        }
+                        if (canDrop)
+                        {
+                            Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], randSpawn, Quaternion.identity);
+                        }
+                        //reset timer
+                        PowerUpDropTimer = PowerUpDropTimerStart;
                     }
-                    if (canDrop)
-                    {
-                        Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], randSpawn, Quaternion.identity);
-                    }
-                    //reset timer
-                    PowerUpDropTimer = PowerUpDropTimerStart;
                 }
+
 
 
                 //check for escape input to pause
