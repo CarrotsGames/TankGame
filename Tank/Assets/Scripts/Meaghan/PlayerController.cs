@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
+
 
 public class PlayerController : MonoBehaviour {
 
     //Variables
     //Desginer
+    [Header("Controller")]
+    [SerializeField]
+    private XboxController controller;
+   
     [Header("Alter Movement")]
     [SerializeField]
     private float speed = 3.0f;
@@ -47,6 +53,12 @@ public class PlayerController : MonoBehaviour {
     {
         get { return health; }
         set { health = value; }
+    }
+
+    public float BulletCoolDown
+    {
+        get { return bulletCoolDown; }
+        set { bulletCoolDown = value; }
     }
 
     // Use this for initialization
@@ -109,12 +121,12 @@ public class PlayerController : MonoBehaviour {
         Vector3 pos = transform.position;
 
         //Alter the temp pos
-        if (Input.GetKey(KeyCode.W))
+        if (XCI.GetAxis(XboxAxis.LeftStickY, controller) > 0 || XCI.GetButton(XboxButton.DPadUp, controller))
         {
             pos.z += speed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (XCI.GetAxis(XboxAxis.LeftStickY, controller) < 0 || XCI.GetButton(XboxButton.DPadDown, controller))
         {
             pos.z -= speed * Time.deltaTime;
         }

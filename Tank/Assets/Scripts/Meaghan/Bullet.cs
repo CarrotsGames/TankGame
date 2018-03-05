@@ -36,6 +36,10 @@ public class Bullet : MonoBehaviour {
             //Reduce health by amount
             player.GetComponent<PlayerController>().Health -= healthReduction;
 
+            //Reset the timer
+            player.GetComponent<PlayerController>().BulletCoolDown = 0.0f;
+
+            //Destroy 
             Destroy(gameObject);
         }
     }
