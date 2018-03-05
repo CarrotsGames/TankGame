@@ -124,9 +124,10 @@ GameObject:
   - component: {fileID: 95389448067350974}
   - component: {fileID: 65815011737285142}
   - component: {fileID: 54645852168839614}
+  - component: {fileID: 65304351461664392}
   m_Layer: 0
   m_Name: pickup_speed
-  m_TagString: Untagged
+  m_TagString: Speed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209474821214418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -0.76, z: 0.07}
+  m_LocalPosition: {x: 0.01, y: -0.36, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4592379694848986}
@@ -182,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916620209198604}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.827755, y: 0.8787209, z: 16.209723}
+  m_LocalPosition: {x: 6.9830236, y: 6.25, z: 29.198978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4442496730982834}
@@ -282,8 +283,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!65 &65304351461664392
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916620209198604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25161168, y: 1.1611838, z: 0.6697751}
+  m_Center: {x: 0.00014802814, y: 0.008110791, z: 0.012108803}
 --- !u!65 &65815011737285142
 BoxCollider:
   m_ObjectHideFlags: 1
