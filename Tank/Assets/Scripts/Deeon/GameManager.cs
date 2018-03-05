@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
 
                 //Setting UI actives
                 GameOverUI.SetActive(true);
-                GameUI.SetActive(false);
+                GameUI.SetActive(true);
                 PausedUI.SetActive(false);
                 CountDownTimerText.gameObject.SetActive(false);
 
@@ -179,12 +179,11 @@ public class GameManager : MonoBehaviour
                     //currentState = GameStates.Playing;
 
                     //Dirty restart
-                    SceneManager.LoadSceneAsync(0);
+                    SceneManager.LoadSceneAsync(1);
                 }
 
                 break;
         }
-
     }
 
     public void ToMenu()
