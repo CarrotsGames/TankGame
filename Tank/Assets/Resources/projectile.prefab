@@ -225,6 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyTime: 0.5
   healthReduction: 1
+  bounceOffWall: {fileID: 8300000, guid: a51186cafec278845b23c4872434fdf4, type: 3}
+  bounceVolume: 1
 --- !u!135 &135259873028251108
 SphereCollider:
   m_ObjectHideFlags: 1
