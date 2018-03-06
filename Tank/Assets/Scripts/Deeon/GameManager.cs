@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
 
                 if(winner != null)
                 {
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(winner.transform.position.x, winner.transform.position.y, endGameYOffset), 0.01f);
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(winner.transform.position.x, winner.transform.position.y, endGameZOffset), 0.01f);
                 }
 
                 break;
@@ -229,6 +229,7 @@ public class GameManager : MonoBehaviour
         if (CountDownTimer <= 0)
         {
             //if it has return true
+            winner = null;
             return true;
         }
 
@@ -238,13 +239,14 @@ public class GameManager : MonoBehaviour
         {
             winner = null;
 
-        //get the players controller
+            //get the players controller
             PlayerController pc = player.GetComponent<PlayerController>();
-        //if the player is alive
+            //if the player is alive
             if(pc.Health > 0)
             {
-        //add 1 to alivePlayers
+                //add 1 to alivePlayers
                 alivePlayers++;
+                //set winner
                 winner = pc.gameObject;
             }
             
