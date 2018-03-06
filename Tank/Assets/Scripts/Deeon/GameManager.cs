@@ -40,16 +40,16 @@ public class GameManager : MonoBehaviour
     public float PowerUpDropTimerStart;
     float PowerUpDropTimer;
 
-    [Tooltip("Prefabs of powerups")]
+    [Header("Prefabs of powerups")]
     public GameObject[] PowerUps;
 
-    [Tooltip("Empty game objects where you want spawn points to be")]
+    [Header("Empty game objects where you want spawn points to be")]
     public GameObject[] PowerupSpawnPoints;
 
 
     private GameObject winner;
 
-    [Tooltip("End Game Zoom offsets")]
+    [Header("End Game Zoom offsets")]
     public float endGameZOffset;
     public float endGameYOffset;
     public float endGameXOffset;
