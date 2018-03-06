@@ -47,8 +47,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] PowerupSpawnPoints;
 
 
-    public GameObject winner;
+    private GameObject winner;
+
+    [Tooltip("End Game Zoom offsets")]
     public float endGameZOffset;
+    public float endGameYOffset;
+    public float endGameXOffset;
 
     private XboxController controller;
     private void Awake()
@@ -202,7 +206,10 @@ public class GameManager : MonoBehaviour
 
                 if(winner != null)
                 {
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(winner.transform.position.x, winner.transform.position.y, endGameZOffset), 0.01f);
+                    Debug.Log(winner.name);
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(winner.transform.position.x + endGameXOffset, winner.transform.position.y + endGameYOffset, winner.transform.position.z + endGameZOffset), 0.01f);
+                    //Camera.main.transform.LookAt(winner.transform);
+                    //Camera.main.orthographic = false;
                 }
 
                 break;
@@ -224,6 +231,7 @@ public class GameManager : MonoBehaviour
     private bool IsGameOver()
     {
         float alivePlayers = 0;
+        winner = null;
         //check if the timer has reached zero
         if (CountDownTimer <= 0)
         {
@@ -236,7 +244,6 @@ public class GameManager : MonoBehaviour
         //check each player in the scene
         foreach(GameObject player in Players)
         {
-            winner = null;
 
             //get the players controller
 			if (player != null)
@@ -263,7 +270,14 @@ public class GameManager : MonoBehaviour
         else if(alivePlayers <= 1)
         {
             //game is over
-            return true;
+            foreach (GameObject player in Players)
+            {
+                if(player.GetComponent<PlayerController>().Health >= 1)
+                {
+                    winner = player;
+                }
+            }
+                return true;
         }
 
         //else return false
