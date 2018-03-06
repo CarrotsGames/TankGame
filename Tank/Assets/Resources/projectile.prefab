@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909211494879016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8836393, y: 1.6814032, z: -1.0130001}
+  m_LocalPosition: {x: 15.295142, y: 2.7969785, z: 19.613834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4963132381829040}
@@ -130,7 +130,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!82 &82943832359278446
 AudioSource:
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab093eb7f1517f4981ea89de7b9e12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 2
+  destroyTime: 5
   healthReduction: 1
   bounceOffWall: {fileID: 8300000, guid: a51186cafec278845b23c4872434fdf4, type: 3}
   bounceVolume: 1
@@ -237,8 +237,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.26953268
+  m_Center: {x: 0.07, y: 0, z: 0}
 --- !u!198 &198193674227838616
 ParticleSystem:
   m_ObjectHideFlags: 1

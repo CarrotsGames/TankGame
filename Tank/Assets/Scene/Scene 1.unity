@@ -2851,8 +2851,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4700644, z: 1.3842697}
-  m_Center: {x: 0, y: 0.2350322, z: -0.935318}
+  m_Size: {x: 1, y: 1.4700644, z: 1.2157488}
+  m_Center: {x: 0, y: 0.2350322, z: -1.0195785}
 --- !u!54 &731558178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3790,8 +3790,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.377922, z: 1.2713695}
-  m_Center: {x: 0, y: -0.4492755, z: -1.4241853}
+  m_Size: {x: 1, y: 1.377922, z: 1.1143737}
+  m_Center: {x: 0, y: -0.4492755, z: -1.5026832}
 --- !u!114 &886734703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5394,7 +5394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: 1
   speed: 5
-  speedBoost: 10
+  speedBoost: 50
   maxSpeedBoostTime: 5
   rotation: 5
   smooth: 10
@@ -5430,8 +5430,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2541702, y: 1.3469256, z: 1.1796484}
-  m_Center: {x: 0.17, y: 0.03, z: -0.72}
+  m_Size: {x: 1.2541702, y: 1.3469256, z: 1.0202935}
+  m_Center: {x: 0.17000002, y: 0.029999971, z: -0.7996775}
 --- !u!114 &1174817149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7283,8 +7283,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.618336, z: 1.3061471}
-  m_Center: {x: 0, y: -0.18720734, z: -1.4423821}
+  m_Size: {x: 1, y: 1.618336, z: 1.2031239}
+  m_Center: {x: 0, y: -0.18720734, z: -1.4938936}
 --- !u!54 &1529337967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9611,7 +9611,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4227694562492154, guid: 1490abaa265191642a898b1ab746d7b4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1490abaa265191642a898b1ab746d7b4, type: 2}
