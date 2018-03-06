@@ -12,31 +12,73 @@ public class SpeedCollision : MonoBehaviour {
     private float soundVolume;
 
     private GameObject player;
-    private bool alreadyPlayed = false;
+    private GameObject player2;
+    private GameObject player3;
+    private GameObject player4;
+    private bool playAudio = false;
     private AudioSource audio;
 
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
+        player3 = GameObject.FindGameObjectWithTag("Player3");
+        player4 = GameObject.FindGameObjectWithTag("Player4");
         audio = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (playAudio)
+        {
+            audio.PlayOneShot(pickUpSound, soundVolume);
+
+            Destroy(gameObject, 0.45f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
         {
-            //Add speed
-            player.GetComponent<PlayerController>().HasSpeedBoost = true;
-
-            if (!alreadyPlayed)
+            if(!playAudio)
             {
-                audio.PlayOneShot(pickUpSound, soundVolume);
-                alreadyPlayed = true;
-            }
+                //Add speed
+                player.GetComponent<PlayerController>().HasSpeedBoost = true;
 
-            //Destroy ourself
-            Destroy(gameObject);
+                playAudio = true;
+            }
+        }
+        else if (other.transform.tag == "Player2")
+        {
+            if (!playAudio)
+            {
+                //Add speed
+                player2.GetComponent<PlayerController>().HasSpeedBoost = true;
+
+                playAudio = true;
+            }
+        }
+        else if (other.transform.tag == "Player3")
+        {
+            if (!playAudio)
+            {
+                //Add speed
+                player3.GetComponent<PlayerController>().HasSpeedBoost = true;
+
+                playAudio = true;
+            }
+        }
+        else if (other.transform.tag == "Player4")
+        {
+            if (!playAudio)
+            {
+                //Add speed
+                player4.GetComponent<PlayerController>().HasSpeedBoost = true;
+
+                playAudio = true;
+            }
         }
     }
 }

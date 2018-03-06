@@ -95,51 +95,52 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        DPadMovement();
-        StickMovement();
-        Rotation();
-
-        //Timers
-        bulletCoolDown += Time.deltaTime;
-
-        if(hasSpeedBoost)
-           speedTimer += Time.deltaTime;
-
-        if(speedTimer > maxSpeedBoostTime)
-        {
-            speed = speedBoost;
-        }
-        else
-        {
-            hasSpeedBoost = false;
-            speedTimer = 0.0f;
-            speed = storedSpeed;
-        }
-
-        //If we can fire
-        if (bulletCoolDown > maxShootCoolDown)
-        {
-            //If we press the fire button
-            if (XCI.GetButton(XboxButton.A, controller))
-            {
-                //Fire
-                Shoot();
-            }
-        }
-
         if(health == 0)
         {
             if(!alreadyPlayed)
             {
                 //Play the death sound
                 audio.PlayOneShot(death, deathVolume);
-
+            
                 alreadyPlayed = true;
             }
             
-
             //Terminate existance 
-            Destroy(gameObject);
+            Destroy(gameObject, 0.65f); 
+        }
+        else
+        {
+            DPadMovement();
+            StickMovement();
+            Rotation();
+
+            //Timers
+            bulletCoolDown += Time.deltaTime;
+
+            if (hasSpeedBoost)
+                speedTimer += Time.deltaTime;
+
+            if (speedTimer > maxSpeedBoostTime)
+            {
+                speed = speedBoost;
+            }
+            else
+            {
+                hasSpeedBoost = false;
+                speedTimer = 0.0f;
+                speed = storedSpeed;
+            }
+
+            //If we can fire
+            if (bulletCoolDown > maxShootCoolDown)
+            {
+                //If we press the fire button
+                if (XCI.GetButton(XboxButton.A, controller))
+                {
+                    //Fire
+                    Shoot();
+                }
+            }
         }
        
     }
