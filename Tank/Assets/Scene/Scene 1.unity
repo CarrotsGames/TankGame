@@ -4254,7 +4254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &107095437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6719,7 +6719,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 615002869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1524863364}
+        m_MethodName: ToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &615002869
@@ -13109,7 +13120,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1119986962}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1006342858
@@ -13964,7 +13975,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1119986965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1524863364}
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1119986965
@@ -17922,11 +17944,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1349012132088266, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
     type: 2}
   m_PrefabInternal: {fileID: 2074893487}
---- !u!1 &1194645849 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1728943278983062, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2074893487}
 --- !u!1 &1194645850 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1439671411136840, guid: 5e606f53c2e38e74a8d9ae0867440b2a,
@@ -19971,7 +19988,7 @@ MonoBehaviour:
   EndGameCountdownText: {fileID: 1194645847}
   currentState: 0
   GameUI: {fileID: 1194645850}
-  PausedUI: {fileID: 1194645849}
+  PausedUI: {fileID: 107095436}
   GameOverUI: {fileID: 1194645848}
   Players:
   - {fileID: 1174817144}
@@ -19987,9 +20004,12 @@ MonoBehaviour:
   - {fileID: 1269319395}
   - {fileID: 674972679}
   - {fileID: 1504477710}
-  endGameZOffset: 90
-  endGameYOffset: 0
+  endGameZOffset: -8
+  endGameYOffset: 8
   endGameXOffset: 0
+  eSystem: {fileID: 0}
+  PauseButton: {fileID: 0}
+  GameOverButton: {fileID: 0}
 --- !u!4 &1524863365
 Transform:
   m_ObjectHideFlags: 0

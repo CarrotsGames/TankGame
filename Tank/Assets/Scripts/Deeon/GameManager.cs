@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
+using UnityEngine.EventSystems;
 
 
 public enum GameStates
@@ -55,6 +56,13 @@ public class GameManager : MonoBehaviour
     public float endGameXOffset;
 
     private XboxController controller;
+
+    public EventSystem eSystem;
+
+    [Header("Buttons")]
+    public GameObject PauseButton;
+    public GameObject GameOverButton;
+
     private void Awake()
     {
         PowerupSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
@@ -168,6 +176,8 @@ public class GameManager : MonoBehaviour
             case GameStates.Paused:
                 //set timescale to 0
                 Time.timeScale = 0;
+
+               // eSystem.SetSelectedGameObject(PauseButton);
 
                 //Setting UI actives
                 PausedUI.SetActive(true);
@@ -283,4 +293,10 @@ public class GameManager : MonoBehaviour
         //else return false
         return false;
     }
+
+    public void Resume()
+    {
+        currentState = GameStates.Playing;
+    }
+
 }
