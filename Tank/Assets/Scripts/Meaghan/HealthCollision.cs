@@ -18,6 +18,7 @@ public class HealthCollision : MonoBehaviour {
     private bool playAudio = false;
     private AudioSource audio;
     private bool startDestroy = false;
+    private bool hasCollected = false;
 
     // Use this for initialization
     void Start ()
@@ -40,67 +41,75 @@ public class HealthCollision : MonoBehaviour {
 
         if(startDestroy)
         {
-            Destroy(gameObject, 1.0f);
+            Destroy(gameObject, 0.5f);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if(!hasCollected)
         {
-            if(!playAudio)
+            if (other.transform.tag == "Player")
             {
-                if (player.GetComponent<PlayerController>().Health < 3)
+                if (!playAudio)
                 {
-                    //Add health
-                    player.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    if (player.GetComponent<PlayerController>().Health < 3)
+                    {
+                        //Add health
+                        player.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    }
+
+                    playAudio = true;
+                    hasCollected = true;
                 }
 
-                playAudio = true;
             }
-            
-        }
-        else if (other.transform.tag == "Player2")
-        {
-            if (!playAudio)
+            else if (other.transform.tag == "Player2")
             {
-                if (player2.GetComponent<PlayerController>().Health < 3)
+                if (!playAudio)
                 {
-                    //Add health
-                    player2.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    if (player2.GetComponent<PlayerController>().Health < 3)
+                    {
+                        //Add health
+                        player2.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    }
+
+                    playAudio = true;
+                    hasCollected = true;
                 }
 
-                playAudio = true;
             }
-
-        }
-        else if (other.transform.tag == "Player3")
-        {
-            if (!playAudio)
+            else if (other.transform.tag == "Player3")
             {
-                if (player3.GetComponent<PlayerController>().Health < 3)
+                if (!playAudio)
                 {
-                    //Add health
-                    player3.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    if (player3.GetComponent<PlayerController>().Health < 3)
+                    {
+                        //Add health
+                        player3.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    }
+
+                    playAudio = true;
+                    hasCollected = true;
                 }
 
-                playAudio = true;
             }
-
-        }
-        else if (other.transform.tag == "Player4")
-        {
-            if (!playAudio)
+            else if (other.transform.tag == "Player4")
             {
-                if (player4.GetComponent<PlayerController>().Health < 3)
+                if (!playAudio)
                 {
-                    //Add health
-                    player4.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    if (player4.GetComponent<PlayerController>().Health < 3)
+                    {
+                        //Add health
+                        player4.GetComponent<PlayerController>().Health += player.GetComponent<PlayerController>().HealthIncrease;
+                    }
+
+                    playAudio = true;
+                    hasCollected = true;
                 }
 
-                playAudio = true;
             }
-
         }
+      
     }
 }
