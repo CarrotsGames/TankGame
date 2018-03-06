@@ -211,6 +211,8 @@ public class PlayerController : MonoBehaviour {
 
         //Rotate the object
         canonTransform.rotation = Quaternion.Slerp(canonTransform.rotation, target, Time.deltaTime * smooth);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
+
     }
 
     private void Shoot()
