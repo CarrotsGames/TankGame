@@ -49,6 +49,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float deathVolume;
 
+    [Header("Particles")]
+    [SerializeField]
+    private ParticleSystem deathParticle;
+    [SerializeField]
+    private ParticleSystem damageParticle;
+    
+
 
     //Programmer
     private float keyPress = 0.0f;
@@ -59,7 +66,9 @@ public class PlayerController : MonoBehaviour {
     private float speedTimer = 0.0f;
     private AudioSource audio;
     private bool alreadyPlayed = false;
-    
+    private bool playDamageParticle;
+    private bool playDeathParticle;
+
     //Getters and setters
     public int Health
     {
@@ -84,10 +93,23 @@ public class PlayerController : MonoBehaviour {
         set { hasSpeedBoost = value; }
     }
 
+    public bool PlayDamageParticle
+    {
+        get { return playDamageParticle; }
+        set { playDamageParticle = value; }
+    }
+
+    public bool PlayDeathParticle
+    {
+        get { return playDeathParticle; }
+        set { playDeathParticle = value; }
+    }
+
     // Use this for initialization
     void Start ()
     {
         bulletPrefab = Resources.Load("projectile") as GameObject;
+        damageParticle.transform.position = transform.position;
         audio = GetComponent<AudioSource>();
         storedSpeed = speed;
 	}
@@ -104,12 +126,26 @@ public class PlayerController : MonoBehaviour {
             
                 alreadyPlayed = true;
             }
+
+            if (playDeathParticle)
+            {
+                deathParticle.Play();
+                playDeathParticle = false;
+
+                //Terminate existance 
+                Destroy(gameObject, 0.65f);
+            }
             
-            //Terminate existance 
-            Destroy(gameObject, 0.65f); 
         }
         else
         {
+            //Play the particle
+            if(playDamageParticle)
+            {
+                damageParticle.Play();
+                playDamageParticle = false;
+            }
+
             DPadMovement();
             StickMovement();
             Rotation();

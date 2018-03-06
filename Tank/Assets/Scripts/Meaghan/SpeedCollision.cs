@@ -21,11 +21,11 @@ public class SpeedCollision : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         player3 = GameObject.FindGameObjectWithTag("Player3");
-        player4 = GameObject.FindGameObjectWithTag("Player4");
-        audio = GetComponent<AudioSource>();
+        player4 = GameObject.FindGameObjectWithTag("Player4"); 
     }
 
     private void Update()

@@ -24,21 +24,17 @@ public class Bullet : MonoBehaviour {
     private GameObject player2;
     private GameObject player3;
     private GameObject player4;
-    private bool alreadyPlayed;
-    private bool canPlay;
     private AudioSource audio;
     private bool playAudio = false;
 
 	// Use this for initialization
 	void Start ()
     {
+        audio = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         player3 = GameObject.FindGameObjectWithTag("Player3");
         player4 = GameObject.FindGameObjectWithTag("Player4");
-        audio = GetComponent<AudioSource>();
-        canPlay = true;
-        alreadyPlayed = false;
 	}
 	
 	// Update is called once per frame
@@ -68,8 +64,16 @@ public class Bullet : MonoBehaviour {
             //Reset the timer
             player.GetComponent<PlayerController>().BulletCoolDown = 0.0f;
 
-            //Destroy 
-            Destroy(gameObject);
+            //Play particles
+            player.GetComponent<PlayerController>().PlayDamageParticle = true;
+
+            if(player.GetComponent<PlayerController>().Health == 0)
+            {
+                player.GetComponent<PlayerController>().PlayDeathParticle = true;
+            }
+
+                //Destroy 
+                Destroy(gameObject);
         }
         else if (collision.transform.tag == "Player2")
         {
@@ -78,6 +82,14 @@ public class Bullet : MonoBehaviour {
 
             //Reset the timer
             player2.GetComponent<PlayerController>().BulletCoolDown = 0.0f;
+
+            //Play particles
+            player2.GetComponent<PlayerController>().PlayDamageParticle = true;
+
+            if (player2.GetComponent<PlayerController>().Health == 0)
+            {
+                player2.GetComponent<PlayerController>().PlayDeathParticle = true;
+            }
 
             //Destroy 
             Destroy(gameObject);
@@ -90,6 +102,14 @@ public class Bullet : MonoBehaviour {
             //Reset the timer
             player3.GetComponent<PlayerController>().BulletCoolDown = 0.0f;
 
+            //Play particles
+            player3.GetComponent<PlayerController>().PlayDamageParticle = true;
+
+            if (player3.GetComponent<PlayerController>().Health == 0)
+            {
+                player3.GetComponent<PlayerController>().PlayDeathParticle = true;
+            }
+
             //Destroy 
             Destroy(gameObject);
         }
@@ -100,6 +120,14 @@ public class Bullet : MonoBehaviour {
 
             //Reset the timer
             player4.GetComponent<PlayerController>().BulletCoolDown = 0.0f;
+
+            //Play particles
+            player4.GetComponent<PlayerController>().PlayDamageParticle = true;
+
+            if (player4.GetComponent<PlayerController>().Health == 0)
+            {
+                player4.GetComponent<PlayerController>().PlayDeathParticle = true;
+            }
 
             //Destroy 
             Destroy(gameObject);
