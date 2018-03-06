@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515804938d3009444b8f0dfad59953be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpSound: {fileID: 8300000, guid: f658320d848598341882ecac43b1c7f9, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 3c596e611db636640b3e5d26fc8b6612, type: 3}
   soundVolume: 1
 --- !u!198 &198011086617370012
 ParticleSystem:
