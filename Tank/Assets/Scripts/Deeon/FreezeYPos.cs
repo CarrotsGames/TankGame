@@ -17,11 +17,12 @@ public class FreezeYPos : MonoBehaviour
      
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "Ground")
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+			transform.position = new Vector3 (transform.position.x, transform.position.y + 0.2f, transform.position.z);
         }
     }
 }
