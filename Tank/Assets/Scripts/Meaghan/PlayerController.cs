@@ -54,8 +54,18 @@ public class PlayerController : MonoBehaviour {
     private ParticleSystem deathParticle;
     [SerializeField]
     private ParticleSystem damageParticle;
-    
 
+    [Header("Insert Crown Here")]
+    [SerializeField]
+    private GameObject crown;
+
+    [Header("Animation")]
+    [SerializeField]
+    private bool isMoving;
+    [SerializeField]
+    private bool isShooting;
+    [SerializeField]
+    private bool idle;
 
     //Programmer
     private float keyPress = 0.0f;
@@ -68,6 +78,7 @@ public class PlayerController : MonoBehaviour {
     private bool alreadyPlayed = false;
     private bool playDamageParticle;
     private bool playDeathParticle;
+    
 
     //Getters and setters
     public int Health
@@ -146,9 +157,10 @@ public class PlayerController : MonoBehaviour {
                 playDamageParticle = false;
             }
 
-            DPadMovement();
+
             StickMovement();
             Rotation();
+            Crown();
 
             //Timers
             bulletCoolDown += Time.deltaTime;
@@ -195,6 +207,17 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
+
+       //if(moveHorizontal > 0 || moveVertical > 0)
+       //{
+       //    isMoving = true;
+       //}
+       //else
+       //{
+       //    isMoving = false;
+       //    idle = true;
+       //}
+
         //Update the position
         transform.position += movement * speed * Time.deltaTime;
     }
@@ -209,18 +232,21 @@ public class PlayerController : MonoBehaviour {
        //Alter the temp pos
        if (XCI.GetButton(XboxButton.DPadUp, controller))
        {                                                  
-           pos.z += speed * Time.deltaTime;               
-       }                                                  
+           pos.z += speed * Time.deltaTime;
+
+       } 
                                                           
        if (XCI.GetButton(XboxButton.DPadDown, controller))
        {                                                 
-           pos.z -= speed * Time.deltaTime;              
-       }                                                 
+           pos.z -= speed * Time.deltaTime;
+
+        }                                                 
                                                          
        if (XCI.GetButton(XboxButton.DPadRight, controller))
        {                                                  
-           pos.x += speed * Time.deltaTime;               
-       }                                                  
+           pos.x += speed * Time.deltaTime;
+
+        }                                                  
                                                           
        if (XCI.GetButton(XboxButton.DPadLeft, controller))
        {
@@ -270,5 +296,14 @@ public class PlayerController : MonoBehaviour {
 
         //Reset the timer
         bulletCoolDown = 0.0f;
+    }
+
+    private void Crown()
+    {
+        if(health < 3)
+        {
+            //Deactivate crown
+            crown.SetActive(false);
+        }
     }
 }
