@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     private XboxController controller;
     private void Awake()
     {
-        Players = GameObject.FindGameObjectsWithTag("Player");
         PowerupSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
@@ -240,15 +239,18 @@ public class GameManager : MonoBehaviour
             winner = null;
 
             //get the players controller
-            PlayerController pc = player.GetComponent<PlayerController>();
-            //if the player is alive
-            if(pc.Health > 0)
-            {
-                //add 1 to alivePlayers
-                alivePlayers++;
-                //set winner
-                winner = pc.gameObject;
-            }
+			if (player != null)
+			{
+				PlayerController pc = player.GetComponent<PlayerController>();
+				//if the player is alive
+				if(pc.Health > 0)
+				{
+					//add 1 to alivePlayers
+					alivePlayers++;
+					//set winner
+					winner = pc.gameObject;
+				}
+			}
             
         }
         
