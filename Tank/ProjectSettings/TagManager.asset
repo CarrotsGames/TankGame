@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Health
   - Speed
+  - Wall
   layers:
   - Default
   - TransparentFX

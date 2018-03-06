@@ -154,18 +154,24 @@ public class PlayerController : MonoBehaviour {
             bulletCoolDown += Time.deltaTime;
 
             if (hasSpeedBoost)
+            {
                 speedTimer += Time.deltaTime;
 
-            if (speedTimer > maxSpeedBoostTime)
-            {
-                speed = speedBoost;
+                if (speedTimer < maxSpeedBoostTime)
+                {
+                    speed = speedBoost;
+                }
+                else
+                {
+                    speed = storedSpeed;
+                    hasSpeedBoost = false;
+                }
             }
             else
             {
-                hasSpeedBoost = false;
                 speedTimer = 0.0f;
-                speed = storedSpeed;
             }
+            
 
             //If we can fire
             if (bulletCoolDown > maxShootCoolDown)

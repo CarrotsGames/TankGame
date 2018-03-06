@@ -17,6 +17,7 @@ public class HealthCollision : MonoBehaviour {
     private GameObject player4;
     private bool playAudio = false;
     private AudioSource audio;
+    private bool startDestroy = false;
 
     // Use this for initialization
     void Start ()
@@ -33,7 +34,12 @@ public class HealthCollision : MonoBehaviour {
         if (playAudio)
         {
             audio.PlayOneShot(pickUpSound, soundVolume);
+            startDestroy = true;
+            playAudio = false;
+        }
 
+        if(startDestroy)
+        {
             Destroy(gameObject, 1.0f);
         }
     }

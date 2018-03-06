@@ -17,6 +17,7 @@ public class SpeedCollision : MonoBehaviour {
     private GameObject player4;
     private bool playAudio = false;
     private AudioSource audio;
+    private bool startDestroy = false;
 
     // Use this for initialization
     void Start()
@@ -33,8 +34,13 @@ public class SpeedCollision : MonoBehaviour {
         if (playAudio)
         {
             audio.PlayOneShot(pickUpSound, soundVolume);
+            startDestroy = true;
+            playAudio = false;
+        }
 
-            Destroy(gameObject, 0.45f);
+        if (startDestroy)
+        {
+            Destroy(gameObject, 1.0f);
         }
     }
 
