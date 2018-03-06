@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     //Variables
     //Desginer
-    [Header("W")]
+    [Header("Choose Controller Number")]
     [SerializeField]
     private XboxController controller;
    
@@ -55,10 +55,21 @@ public class PlayerController : MonoBehaviour {
         set { health = value; }
     }
 
+    public int HealthIncrease
+    {
+        get { return healthIncrease; }
+    }
+
     public float BulletCoolDown
     {
         get { return bulletCoolDown; }
         set { bulletCoolDown = value; }
+    }
+
+    public bool HasSpeedBoost
+    {
+        get { return hasSpeedBoost; }
+        set { hasSpeedBoost = value; }
     }
 
     // Use this for initialization
@@ -103,8 +114,6 @@ public class PlayerController : MonoBehaviour {
                 Shoot();
             }
         }
-
-
 
         if(health == 0)
         {
@@ -174,8 +183,6 @@ public class PlayerController : MonoBehaviour {
             keyPress += rotation * Time.deltaTime;
         }
 
-
-
         //Create the target (only around the horizontal axis)
         float tiltAroundY = keyPress * tiltAngle;
         Quaternion target = Quaternion.Euler(0, tiltAroundY, 0);
@@ -196,26 +203,5 @@ public class PlayerController : MonoBehaviour {
 
         //Reset the timer
         bulletCoolDown = 0.0f;
-    }
-
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Speed")
-        {
-            hasSpeedBoost = true;
-
-            //Destroy the other gameObject
-            Destroy(other.gameObject);
-        }
-
-        if(other.tag == "Health")
-        {
-            health += healthIncrease;
-
-            //Destroy the other gameObject
-            Destroy(other.gameObject);
-        }
     }
 }
