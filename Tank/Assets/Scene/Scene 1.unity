@@ -3535,7 +3535,7 @@ MonoBehaviour:
   deathVolume: 1
   deathParticle: {fileID: 272039374}
   damageParticle: {fileID: 1675029881}
-  crown: {fileID: 0}
+  crown: {fileID: 1081876923769720, guid: 3afb9542c8c75904c95aae1c00e18f4c, type: 2}
   isMoving: 0
   isShooting: 0
   idle: 0
@@ -4695,7 +4695,7 @@ MonoBehaviour:
   deathVolume: 1
   deathParticle: {fileID: 1194547430}
   damageParticle: {fileID: 676089301}
-  crown: {fileID: 0}
+  crown: {fileID: 1081876923769720, guid: 3afb9542c8c75904c95aae1c00e18f4c, type: 2}
   isMoving: 0
   isShooting: 0
   idle: 0
@@ -6689,7 +6689,7 @@ MonoBehaviour:
   deathVolume: 1
   deathParticle: {fileID: 657656621}
   damageParticle: {fileID: 1736659701}
-  crown: {fileID: 0}
+  crown: {fileID: 1081876923769720, guid: 3afb9542c8c75904c95aae1c00e18f4c, type: 2}
   isMoving: 0
   isShooting: 0
   idle: 0
@@ -9049,7 +9049,7 @@ MonoBehaviour:
   deathVolume: 1
   deathParticle: {fileID: 1629462473}
   damageParticle: {fileID: 1912571026}
-  crown: {fileID: 0}
+  crown: {fileID: 1081876923769720, guid: 3afb9542c8c75904c95aae1c00e18f4c, type: 2}
   isMoving: 0
   isShooting: 0
   idle: 0
