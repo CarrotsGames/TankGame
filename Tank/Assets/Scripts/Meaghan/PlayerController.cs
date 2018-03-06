@@ -313,5 +313,9 @@ public class PlayerController : MonoBehaviour {
             //Deactivate crown
             crown.SetActive(false);
         }
+        else
+        {
+            crown.SetActive(true);
+        }
     }
 }
