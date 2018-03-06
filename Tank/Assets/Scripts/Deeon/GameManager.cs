@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("Empty game objects where you want spawn points to be")]
     public GameObject[] PowerupSpawnPoints;
 
+
+    public GameObject winner;
+    public float endGameZOffset;
+
     private XboxController controller;
     private void Awake()
     {
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
         CountDownTimer = CountDownTimerStart;
         EndGameCountdownTimer = EndGameCountdownTimerStart;
         PowerUpDropTimer = PowerUpDropTimerStart;
+        winner = null;
     }
 
     // Update is called once per frame
@@ -196,6 +201,11 @@ public class GameManager : MonoBehaviour
                     SceneManager.LoadSceneAsync(1);
                 }
 
+                if(winner != null)
+                {
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(winner.transform.position.x, winner.transform.position.y, endGameYOffset), 0.01f);
+                }
+
                 break;
         }
     }
@@ -214,7 +224,7 @@ public class GameManager : MonoBehaviour
 
     private bool IsGameOver()
     {
-        //float alivePlayers;
+        float alivePlayers = 0;
         //check if the timer has reached zero
         if (CountDownTimer <= 0)
         {
@@ -224,30 +234,33 @@ public class GameManager : MonoBehaviour
 
 
         //check each player in the scene
-        //foreach(GameObject player in Players)
-        //{
+        foreach(GameObject player in Players)
+        {
+            winner = null;
+
         //get the players controller
-        //    PlayerController pc = player.GetComponent<PlayerController>();
+            PlayerController pc = player.GetComponent<PlayerController>();
         //if the player is alive
-        //    if(pc.getAlive())
-        //    {
+            if(pc.Health > 0)
+            {
         //add 1 to alivePlayers
-        //        alivePlayers++;
-        //    }
-        //    
-        //}
-        //
+                alivePlayers++;
+                winner = pc.gameObject;
+            }
+            
+        }
+        
         //if more than 1 person is still alive
-        //if(alivePlayers > 1)
-        //{
-        //   //continue playing
-        //}
+        if(alivePlayers > 1)
+        {
+           //continue playing
+        }
         //if 1 or less people are alive
-        //else if(alivePlayers <= 1)
-        //{
-        //game is over
-        //    return true;
-        //}
+        else if(alivePlayers <= 1)
+        {
+            //game is over
+            return true;
+        }
 
         //else return false
         return false;
