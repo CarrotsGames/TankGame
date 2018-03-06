@@ -61,11 +61,11 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Animation")]
     [SerializeField]
-    private bool isMoving;
+    private bool isMoving = false;
     [SerializeField]
-    private bool isShooting;
+    private bool isShooting = false;
     [SerializeField]
-    private bool idle;
+    private bool idle = true;
 
     //Programmer
     private float keyPress = 0.0f;
@@ -191,8 +191,15 @@ public class PlayerController : MonoBehaviour {
                 //If we press the fire button
                 if (XCI.GetButton(XboxButton.A, controller))
                 {
+                    isShooting = true;
+                    idle = false;
                     //Fire
                     Shoot();
+                }
+                else
+                {
+                    isShooting = false;
+                    idle = true;
                 }
             }
         }
@@ -208,15 +215,16 @@ public class PlayerController : MonoBehaviour {
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
 
-       //if(moveHorizontal > 0 || moveVertical > 0)
-       //{
-       //    isMoving = true;
-       //}
-       //else
-       //{
-       //    isMoving = false;
-       //    idle = true;
-       //}
+       if(moveHorizontal > 0 || moveVertical > 0)
+       {
+            isMoving = true;
+            idle = false;
+       }
+       else
+       {
+           isMoving = false;
+           idle = true;
+       }
 
         //Update the position
         transform.position += movement * speed * Time.deltaTime;
