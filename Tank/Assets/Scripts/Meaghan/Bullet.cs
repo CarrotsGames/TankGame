@@ -12,13 +12,26 @@ public class Bullet : MonoBehaviour {
     [SerializeField]
     private int healthReduction = 1;
 
+    [Header("Audio Stuff")]
+    [SerializeField]
+    private AudioClip bounceOffWall;
+    [Range(0.0f, 1.0f)]
+    [SerializeField]
+    private float bounceVolume;
+
     //Programmer
-    GameObject player;
+    private GameObject player;
+    private bool alreadyPlayed;
+    private bool canPlay;
+    private AudioSource audio;
 
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        audio = GetComponent<AudioSource>();
+        canPlay = true;
+        alreadyPlayed = false;
 	}
 	
 	// Update is called once per frame
@@ -41,6 +54,11 @@ public class Bullet : MonoBehaviour {
 
             //Destroy 
             Destroy(gameObject);
+        }
+        
+        if(collision.transform.tag == "Wall")
+        {
+           audio.PlayOneShot(bounceOffWall, bounceVolume);
         }
     }
 }

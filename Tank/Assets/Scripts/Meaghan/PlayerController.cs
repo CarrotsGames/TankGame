@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Alter Bullet")]
     [SerializeField]
     private float bulletSpeed = 20.0f;
+    [SerializeField]
     private float maxShootCoolDown = 5.0f;
 
     [Header("Alter Health")]
@@ -38,6 +39,14 @@ public class PlayerController : MonoBehaviour {
     private int health = 3;
     [SerializeField]
     private int healthIncrease = 1;
+
+    [Header("Audio Stuff")]
+    [SerializeField]
+    private AudioClip death;
+    [Range(0.0f, 1.0f)]
+    [SerializeField]
+    private float deathVolume;
+
 
     //Programmer
     private Transform canonTransform;
@@ -47,6 +56,8 @@ public class PlayerController : MonoBehaviour {
     private float storedSpeed;
     private bool hasSpeedBoost = false;
     private float speedTimer = 0.0f;
+    private AudioSource audio;
+    private bool alreadyPlayed = false;
     
     //Getters and setters
     public int Health
@@ -77,6 +88,7 @@ public class PlayerController : MonoBehaviour {
     {
         canonTransform = transform.GetChild(0);
         bulletPrefab = Resources.Load("projectile") as GameObject;
+        audio = GetComponent<AudioSource>();
         storedSpeed = speed;
 	}
 	
@@ -117,6 +129,15 @@ public class PlayerController : MonoBehaviour {
 
         if(health == 0)
         {
+            if(!alreadyPlayed)
+            {
+                //Play the death sound
+                audio.PlayOneShot(death, deathVolume);
+
+                alreadyPlayed = true;
+            }
+            
+
             //Terminate existance 
             Destroy(gameObject);
         }
@@ -200,6 +221,7 @@ public class PlayerController : MonoBehaviour {
         projectile.transform.position = canonTransform.position + canonTransform.forward;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = canonTransform.forward * bulletSpeed;
+        
 
         //Reset the timer
         bulletCoolDown = 0.0f;
