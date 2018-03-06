@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1540337409466730}
   m_IsPrefabParent: 1
+--- !u!1 &1028510749468538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4310298997829342}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1098398116432786
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +275,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540337409466730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15767765, y: -0.72295785, z: -0.45252132}
+  m_LocalPosition: {x: -0.2624302, y: -0.3791833, z: -0.5107498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4139485486619582}
@@ -269,8 +284,22 @@ Transform:
   - {fileID: 4173218219774504}
   - {fileID: 4699673254265468}
   - {fileID: 4072936254246602}
+  - {fileID: 4310298997829342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4310298997829342
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028510749468538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.61, z: 0.824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4227694562492154}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4699673254265468
 Transform:
@@ -467,7 +496,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098398116432786}
-  m_Mesh: {fileID: 4300000, guid: 1c4f79f6fbba6964bb1f734e4ceabb19, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9959bdd2f3ddc224797b693a3f9f4ec7, type: 3}
 --- !u!33 &33846394643703124
 MeshFilter:
   m_ObjectHideFlags: 1
