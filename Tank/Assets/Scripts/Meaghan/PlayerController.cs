@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour {
     private float bulletSpeed = 20.0f;
     [SerializeField]
     private float maxShootCoolDown = 5.0f;
+    [SerializeField]
+    private Transform canonTransform;
 
     [Header("Alter Health")]
     [SerializeField]
@@ -49,7 +51,6 @@ public class PlayerController : MonoBehaviour {
 
 
     //Programmer
-    private Transform canonTransform;
     private float keyPress = 0.0f;
     private GameObject bulletPrefab;
     private float bulletCoolDown = 5.1f;
@@ -86,7 +87,6 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        canonTransform = transform.GetChild(0);
         bulletPrefab = Resources.Load("projectile") as GameObject;
         audio = GetComponent<AudioSource>();
         storedSpeed = speed;
