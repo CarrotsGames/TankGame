@@ -28,6 +28,7 @@ public class HealthCollision : MonoBehaviour {
         player2 = GameObject.FindGameObjectWithTag("Player2");
         player3 = GameObject.FindGameObjectWithTag("Player3");
         player4 = GameObject.FindGameObjectWithTag("Player4");
+		hasCollected = false;
     }
 
     private void Update()

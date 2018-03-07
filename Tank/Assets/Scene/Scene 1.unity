@@ -10838,7 +10838,7 @@ MonoBehaviour:
   smooth: 10
   tiltAngle: 30
   bulletSpeed: 20
-  maxShootCoolDown: 5
+  maxShootCoolDown: 2
   canonTransform: {fileID: 190506838}
   health: 3
   healthIncrease: 1
@@ -12133,7 +12133,7 @@ MonoBehaviour:
   smooth: 10
   tiltAngle: 30
   bulletSpeed: 20
-  maxShootCoolDown: 5
+  maxShootCoolDown: 2
   canonTransform: {fileID: 1100140363}
   health: 3
   healthIncrease: 1
@@ -17694,7 +17694,7 @@ MonoBehaviour:
   smooth: 10
   tiltAngle: 30
   bulletSpeed: 20
-  maxShootCoolDown: 5
+  maxShootCoolDown: 2
   canonTransform: {fileID: 888379541}
   health: 3
   healthIncrease: 1
@@ -20160,7 +20160,7 @@ MonoBehaviour:
   smooth: 10
   tiltAngle: 30
   bulletSpeed: 20
-  maxShootCoolDown: 5
+  maxShootCoolDown: 2
   canonTransform: {fileID: 218722251}
   health: 3
   healthIncrease: 1

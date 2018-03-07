@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab093eb7f1517f4981ea89de7b9e12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 5
+  destroyTime: 3
   healthReduction: 1
   bounceOffWall: {fileID: 8300000, guid: a51186cafec278845b23c4872434fdf4, type: 3}
   bounceVolume: 1
